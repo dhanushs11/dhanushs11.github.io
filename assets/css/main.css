@@ -884,37 +884,50 @@ section,
 # Services Section
 --------------------------------------------------------------*/
 .services .service-item {
-  background-color: var(--surface-color);
-  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
-  padding: 60px 30px;
-  transition: all ease-in-out 0.3s;
-  border-radius: 18px;
-  border-bottom: 5px solid var(--surface-color);
-  height: 100%;
+  /* Adjust padding within the card if content feels too close to edges */
+  padding: 40px 25px; /* Keep this padding to ensure space around content */
+  height: 100%; /* Ensure all service boxes are the same height */
+  display: flex; /* Use flexbox for the entire card content */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center content horizontally within the card */
+  justify-content: flex-start; /* Align content to the top of the card */
+  border-radius: 10px; /* Slightly more rounded corners for the card */
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth, slightly more pronounced */
+  background-color: #fff; /* Ensure white background for the card */
+  transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
 }
-
+/* Adjustments for the circular icon container */
+/* Adjustments for the icon container - REMOVE CIRCLE PROPERTIES */
 .services .service-item .icon {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  margin: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 50px;
-  display: flex;
+  /* Removed width, height, border-radius, background, and border properties */
+  display: flex; /* Keep flexbox to center the image */
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  transition: ease-in-out 0.3s;
+  margin: 0 auto 40px auto; /* Keep margin to separate image from text */
+  flex-shrink: 0; /* Prevent the icon from shrinking on smaller screens */
+  /* If you want a specific "area" for the icon, but not a circle, you could use padding: */
+  padding: 10px; /* Example: adds some space around the logo itself */
 }
-
+/* Styling for the logo image */
+.services .service-item .icon img {
+  max-width: 300px; /* Keep the logo large */
+  max-height: 180px;
+  object-fit: contain;
+  display: block;
+  /* Ensure the image doesn't have its own border or background */
+  border: none;
+  background: none;
+}
+/* Text below the icon */
 .services .service-item h3 {
-  font-weight: 700;
-  margin: 10px 0 15px 0;
-  font-size: 22px;
-  transition: ease-in-out 0.3s;
+  font-size: 1.6rem; /* Significantly increased font size for the heading */
+  font-weight: 600; /* Make the text bolder */
+  color: #333; /* Darker color for better contrast */
+  text-align: center; /* Ensure the text is centered */
+  margin-top: 0; /* Reset default margin */
+  margin-bottom: 0; /* Ensure no extra space below the heading */
+  line-height: 1.2; /* Adjust line height for better readability if text wraps */
 }
-
 .services .service-item p {
   line-height: 24px;
   font-size: 14px;
@@ -922,10 +935,10 @@ section,
 }
 
 @media (min-width: 1365px) {
-  .services .service-item:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-color);
-  }
+.services .service-item:hover {
+  transform: translateY(-5px); /* Lift slightly on hover */
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
 
   .services .service-item:hover h3 {
     color: var(--accent-color);
