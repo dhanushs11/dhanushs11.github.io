@@ -632,6 +632,7 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
+  font-weight: bold;
   padding-bottom: 60px;
   position: relative;
 }
@@ -893,7 +894,7 @@ section,
   justify-content: flex-start; /* Align content to the top of the card */
   border-radius: 10px; /* Slightly more rounded corners for the card */
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth, slightly more pronounced */
-  background-color: #fff; /* Ensure white background for the card */
+  background-color: #4fa9a9; /* Ensure white background for the card */
   transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
 }
 /* Adjustments for the circular icon container */
@@ -986,6 +987,11 @@ section,
   display: block;
   color: var(--default-color);
   font-weight: 700;
+}
+
+.services.section {
+  padding: 60px 0;
+  background-color: #87b2cf; /* Add this line for a light blue-grey background */
 }
 
 .stats .stats-item p {
@@ -1104,7 +1110,9 @@ section,
   height: 100%;
   padding: 0 0 15px 0;
 }
-
+#portfolio {
+  background-color: #989bd5; /* Or your preferred light color, matching the Tech stack */
+}
 .pricing .pricing-item h3 {
   margin: 0;
   font-size: 20px;
@@ -1352,7 +1360,7 @@ section,
 }
 
 .contact .info-item h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0 0 2px 0;
 }
@@ -1360,7 +1368,7 @@ section,
 .contact .info-item p {
   padding: 0;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .contact .info-item:hover i {
@@ -1710,3 +1718,101 @@ section,
   color: var(--default-color) !important;
 }
 
+.resume-subtitle {
+  font-size: 1.5rem; /* Adjust as needed, 1.5rem is 1.5 times the base font size */
+  font-weight: 700;  /* 700 is typically bold */
+  color: #3e3535; /* You might want to adjust the color for better contrast if needed */
+}
+
+.portfolio-filters li {
+  font-weight: bold; /* Makes the text bold */
+  font-size: 1.4em;   /* Increases the font size. Adjust as needed. */
+  /* You might also want to increase the padding slightly if the text looks too cramped */
+  /* padding: 8px 18px; */
+}
+
+/* If you want the active filter to have a different style (e.g., even bolder) */
+.portfolio-filters li.filter-active {
+  font-size: 1.4em; /* Slightly larger for the active one */
+}
+
+#certifications {
+  padding: 60px 0; /* Add some padding top and bottom */
+  background-color: #84888d; /* Example: use a light background, similar to your portfolio/tech stack */
+}
+
+/* Style for the titles within the certifications section */
+.certifications .resume-title {
+  font-size: 1.5em; /* Adjust as needed */
+  color: #333; /* Darker color for headings */
+  margin-bottom: 20px;
+}
+
+/* Style for individual certification items */
+.certifications .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #007bff; /* Example: blue border for consistency */
+  position: relative;
+  background-color: #85bece; /* White background for individual items */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+  margin-bottom: 20px;
+}
+
+.certifications .resume-item h4 {
+  line-height: 18px;
+  font-size: 1.2em; /* Adjust certification title size */
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1a202c; /* Dark text for titles */
+  margin-bottom: 10px;
+}
+
+.certifications .resume-item h5 {
+  font-size: 1em; /* Adjust date/issuer size */
+  background: #e7f0fa; /* Light background for dates */
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #007bff; /* Blue text for dates */
+  border-radius: 5px;
+}
+
+.certifications .resume-item ul {
+  padding-left: 20px;
+  list-style: none; /* Remove default bullet points */
+}
+
+.certifications .resume-item ul li {
+  padding-bottom: 10px;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #555;
+  position: relative;
+}
+
+/* Custom bullet point for list items */
+.certifications .resume-item ul li::before {
+  content: "•"; /* Custom bullet point */
+  position: absolute;
+  left: 0;
+  color: #444546; /* Color for the bullet */
+  font-weight: bold;
+}
+
+.certifications .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+.certifications .section-title p {
+  font-weight: bold; /* Makes the text bold */
+  font-size: 1.6em;   /* Increases the font size. Adjust as needed (e.g., 1.3em, 18px) */
+  color: #555; /* A slightly darker color for better readability on the blue background */
+}
+
+.contact .section-title p {
+  font-size: 1.4em; /* Increase the font size. Adjust '1.2em' as needed (e.g., 1.3em, 18px) */
+}
