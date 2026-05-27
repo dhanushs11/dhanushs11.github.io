@@ -153,8 +153,6 @@
       display: block;
       margin: 0 auto;
       transition: transform .3s;
-      mix-blend-mode: multiply;
-      filter: brightness(0.95);
     }
     .tech-label {
       text-align: center;
@@ -163,6 +161,15 @@
       margin-top: 12px;
       margin-bottom: 0;
       letter-spacing: .3px;
+    }
+
+    /* ── Tech Stack section: dark bg ── */
+    section#services.services.section {
+      background-color: #0a0f1a !important;
+    }
+    section#services .section-title h2,
+    section#services .section-title p {
+      color: #e0e8f5 !important;
     }
 
     /* ── Tech Stack cards: modern dark with accent hover ── */
@@ -790,7 +797,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/docker2.png" alt="Docker" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">Docker</h3>
             </div>
@@ -808,7 +815,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/cfn2.png" alt="CloudFormation" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.simpleicons.org/awscloudformation/FF9900" alt="CloudFormation" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">CloudFormation</h3>
             </div>
@@ -817,7 +824,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/jenkins.png" alt="Jenkins" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">Jenkins CI/CD</h3>
             </div>
@@ -826,7 +833,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/python.png" alt="Python" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">Python</h3>
             </div>
@@ -835,7 +842,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/bash2.png" alt="Bash" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">Bash Scripting</h3>
             </div>
@@ -853,7 +860,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="900">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/linux.jpg" alt="Linux" style="width: 100%; height: 120px; object-fit: contain;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <h3 class="tech-label">Linux</h3>
             </div>
@@ -1258,14 +1265,6 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Open-to-work banner -->
-        <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="150">
-          <span style="display:inline-block;background:rgba(13,110,253,.12);border:1px solid rgba(13,110,253,.3);color:#6ea8fe;border-radius:50px;padding:9px 26px;font-size:.9rem;font-weight:600;letter-spacing:.4px;">
-            <span style="display:inline-block;width:8px;height:8px;background:#2ea043;border-radius:50%;margin-right:9px;vertical-align:middle;box-shadow:0 0 6px #2ea043;"></span>
-            Open to new opportunities — let's build something great together
-          </span>
-        </div>
 
         <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
           <div class="row gy-4 justify-content-center">
