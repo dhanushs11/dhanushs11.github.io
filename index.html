@@ -299,48 +299,106 @@
       opacity: .75;
     }
 
-    /* ── Portfolio cards ── */
+    /* ── Force dark background on portfolio + certs sections ── */
+    section.portfolio.section,
+    section.certifications.section {
+      background-color: #0d1117 !important;
+    }
+    section.portfolio.section .section-title h2,
+    section.portfolio.section .section-title p,
+    section.certifications.section .section-title h2,
+    section.certifications.section .section-title p,
+    section.certifications.section .resume-title {
+      color: #e0e8f5 !important;
+    }
+
+    /* ── Portfolio cards — remove floating overlay, use static panel ── */
     .portfolio-item {
       position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,0,0,.3);
+      transition: transform .22s, box-shadow .22s;
     }
-    .portfolio-item img {
-      border-radius: 10px 10px 0 0;
-      height: 180px;
-      width: 100%;
-      object-fit: cover;
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.45);
     }
-    .portfolio-info {
-      border-radius: 0 0 10px 10px !important;
-      background: #151b2e !important;
+    .portfolio-item > img {
+      border-radius: 12px 12px 0 0 !important;
+      height: 175px !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+    /* Hide the default template hover overlay */
+    .portfolio-item .portfolio-info {
+      position: static !important;
+      opacity: 1 !important;
+      transform: none !important;
+      left: auto !important; top: auto !important;
+      border-radius: 0 0 12px 12px !important;
+      background: #151c2e !important;
       border: 1px solid rgba(255,255,255,.07) !important;
       border-top: none !important;
-      padding: 14px 16px 14px !important;
+      padding: 14px 16px 12px !important;
     }
     .portfolio-info h4 {
-      font-size: .95rem !important;
+      font-size: .93rem !important;
       font-weight: 700 !important;
-      margin-bottom: 4px !important;
-      color: #e8edf5 !important;
+      margin-bottom: 3px !important;
+      color: #dde6f5 !important;
+      white-space: normal !important;
     }
     .portfolio-info p {
-      font-size: .8rem !important;
-      color: #8a9bbf !important;
-      margin-bottom: 6px !important;
+      font-size: .78rem !important;
+      color: #7a8eb0 !important;
+      margin-bottom: 8px !important;
+      line-height: 1.4 !important;
     }
+    /* Replace link icon with a styled GitHub button */
+    .portfolio-info .details-link {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      font-size: .75rem !important;
+      font-weight: 600 !important;
+      color: #6ea8fe !important;
+      background: rgba(13,110,253,.1) !important;
+      border: 1px solid rgba(13,110,253,.25) !important;
+      border-radius: 20px !important;
+      padding: 3px 12px !important;
+      text-decoration: none !important;
+      transition: background .2s, color .2s !important;
+      position: static !important;
+    }
+    .portfolio-info .details-link::before {
+      content: "View on GitHub";
+      font-size: .72rem;
+    }
+    .portfolio-info .details-link i {
+      display: none !important;
+    }
+    .portfolio-info .details-link:hover {
+      background: rgba(13,110,253,.22) !important;
+      color: #fff !important;
+    }
+
+    /* ── Portfolio category badges ── */
     .portfolio-category-badge {
       display: inline-block;
-      font-size: .7rem;
+      font-size: .68rem;
       font-weight: 700;
-      padding: 2px 10px;
+      padding: 2px 9px;
       border-radius: 20px;
-      margin-bottom: 6px;
-      letter-spacing: .4px;
+      margin-bottom: 5px;
+      letter-spacing: .3px;
       text-transform: uppercase;
     }
     .badge-cfn  { background: rgba(255,153,0,.15); color: #ff9900; border: 1px solid rgba(255,153,0,.3); }
-    .badge-k8s  { background: rgba(50,108,229,.15); color: #326ce5; border: 1px solid rgba(50,108,229,.3); }
-    .badge-bash { background: rgba(40,167,69,.15);  color: #28a745; border: 1px solid rgba(40,167,69,.3); }
-    .badge-misc { background: rgba(108,117,125,.15); color: #adb5bd; border: 1px solid rgba(108,117,125,.3); }
+    .badge-k8s  { background: rgba(50,108,229,.15); color: #6ea8fe; border: 1px solid rgba(50,108,229,.3); }
+    .badge-bash { background: rgba(40,167,69,.15);  color: #56d364; border: 1px solid rgba(40,167,69,.3); }
+    .badge-misc { background: rgba(139,148,158,.15); color: #8b949e; border: 1px solid rgba(139,148,158,.3); }
 
     /* Filter pills */
     .portfolio-filters li {
@@ -348,7 +406,8 @@
       padding: 6px 18px !important;
       font-size: .85rem !important;
       font-weight: 600 !important;
-      border: 1px solid rgba(255,255,255,.12) !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
+      color: #c8d4e8 !important;
       cursor: pointer;
       transition: background .2s, color .2s, border-color .2s !important;
     }
@@ -361,95 +420,83 @@
 
     /* ── Certifications cards ── */
     .cert-card {
-      background: #13192b;
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 12px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      margin-bottom: 14px;
+      background: #13192b !important;
+      border: 1px solid rgba(255,255,255,.07) !important;
+      border-radius: 12px !important;
+      padding: 16px 18px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      transition: transform .2s, box-shadow .2s !important;
+      margin-bottom: 12px !important;
     }
     .cert-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      transform: translateY(-3px) !important;
+      box-shadow: 0 6px 20px rgba(0,0,0,.3) !important;
     }
     .cert-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.4rem;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      font-size: 1.3rem !important;
     }
     .cert-body h4 {
-      font-size: .92rem;
-      font-weight: 700;
-      color: #e0e8f5;
-      margin: 0 0 3px;
+      font-size: .9rem !important;
+      font-weight: 700 !important;
+      color: #dde6f5 !important;
+      margin: 0 0 3px !important;
     }
     .cert-body .cert-issuer {
-      font-size: .78rem;
-      color: #7a8eb0;
-      margin: 0 0 3px;
+      font-size: .76rem !important;
+      color: #6a7e9e !important;
+      margin: 0 0 3px !important;
     }
     .cert-body .cert-date {
-      font-size: .75rem;
-      font-weight: 600;
-      color: #556080;
+      font-size: .72rem !important;
+      font-weight: 600 !important;
+      color: #4a5c7a !important;
     }
-    /* Per-issuer colors */
-    .cert-aws   { background: rgba(255,153,0,.15); border-left: 3px solid #ff9900 !important; }
-    .cert-aws .cert-icon { background: rgba(255,153,0,.15); color: #ff9900; }
-    .cert-azure { background: rgba(0,114,204,.12); border-left: 3px solid #0072cc !important; }
-    .cert-azure .cert-icon { background: rgba(0,114,204,.15); color: #0078d4; }
-    .cert-hashi { background: rgba(123,66,188,.12); border-left: 3px solid #7b42bc !important; }
-    .cert-hashi .cert-icon { background: rgba(123,66,188,.15); color: #7b42bc; }
-    .cert-atl   { background: rgba(0,82,204,.1);   border-left: 3px solid #0052cc !important; }
-    .cert-atl .cert-icon { background: rgba(0,82,204,.15); color: #0052cc; }
+    .cert-aws   { background: rgba(255,153,0,.1) !important;  border-left: 3px solid #ff9900 !important; }
+    .cert-aws .cert-icon { background: rgba(255,153,0,.15) !important; color: #ff9900 !important; }
+    .cert-azure { background: rgba(0,114,204,.1) !important;  border-left: 3px solid #0078d4 !important; }
+    .cert-azure .cert-icon { background: rgba(0,114,204,.15) !important; color: #0078d4 !important; }
+    .cert-hashi { background: rgba(123,66,188,.1) !important; border-left: 3px solid #7b42bc !important; }
+    .cert-hashi .cert-icon { background: rgba(123,66,188,.15) !important; color: #a370f7 !important; }
+    .cert-atl   { background: rgba(0,82,204,.08) !important;  border-left: 3px solid #0052cc !important; }
+    .cert-atl .cert-icon { background: rgba(0,82,204,.15) !important; color: #4c9aff !important; }
+
     /* Achievement callout */
     .achievement-card {
-      background: rgba(255,193,7,.07);
-      border: 1px solid rgba(255,193,7,.25);
+      background: rgba(255,193,7,.06) !important;
+      border: 1px solid rgba(255,193,7,.2) !important;
       border-left: 4px solid #ffc107 !important;
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      transition: transform .2s, box-shadow .2s;
+      border-radius: 12px !important;
+      padding: 18px 20px !important;
+      margin-bottom: 14px !important;
+      transition: transform .2s, box-shadow .2s !important;
     }
     .achievement-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255,193,7,.1);
+      transform: translateY(-3px) !important;
+      box-shadow: 0 6px 20px rgba(255,193,7,.1) !important;
     }
     .achievement-card h4 {
-      font-size: .95rem;
-      font-weight: 700;
-      color: #ffd454;
-      margin: 0 0 6px;
+      font-size: .95rem !important;
+      font-weight: 700 !important;
+      color: #ffd454 !important;
+      margin: 0 0 6px !important;
     }
     .achievement-card p {
-      font-size: .82rem;
-      color: #a89060;
-      margin: 0;
+      font-size: .82rem !important;
+      color: #9a8050 !important;
+      margin: 0 !important;
     }
-    .achievement-card a { color: #ffc107; }
-    .achievement-card a:hover { color: #ffd454; }
-      display: inline-block;
-      margin-top: 4px;
-      font-size: .78rem;
-      color: #0d6efd;
-      text-decoration: none;
-      border: 1px solid rgba(13,110,253,.4);
-      border-radius: 12px;
-      padding: 2px 10px;
-      transition: background .2s;
-    }
-    .cert-verify:hover {
-      background: rgba(13,110,253,.1);
-    }
+    .achievement-card strong { color: #ffc107 !important; }
+    .achievement-card a { color: #ffc107 !important; text-decoration: none !important; }
+    .achievement-card a:hover { color: #ffd454 !important; }
   </style>
 
   <!-- =======================================================
