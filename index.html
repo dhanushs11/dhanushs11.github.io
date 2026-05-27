@@ -4,13 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Dhanush Satyavolu - DevOps Engineer</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Dhanush Satyavolu - DevSecOps &amp; Cloud Engineer</title>
+  <meta name="description" content="Dhanush Satyavolu — DevSecOps &amp; Cloud Engineer with 3.5+ years building scalable, secure infrastructure on AWS and Azure. AWS Certified Solutions Architect, Terraform Associate, Kubernetes expert.">
+  <meta name="keywords" content="DevOps, DevSecOps, Cloud Engineer, AWS, Azure, Kubernetes, Docker, Terraform, CI/CD, CloudFormation, EKS, Jenkins">
 
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Dhanush Satyavolu - DevSecOps &amp; Cloud Engineer">
+  <meta property="og:description" content="DevSecOps &amp; Cloud Engineer — AWS Certified, Kubernetes expert, 3.5+ years of infrastructure automation.">
+  <meta property="og:type" content="website">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -27,6 +32,186 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Custom Enhancements -->
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,14,26,.82) 0%, rgba(0,80,160,.55) 100%);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      padding-top: 120px;
+      padding-bottom: 100px;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .hero-cta {
+      margin-top: 28px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-cta .btn-primary-cta {
+      background: #0d6efd;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+    }
+    .hero-cta .btn-primary-cta:hover {
+      background: #0b5ed7;
+      transform: translateY(-2px);
+    }
+    .hero-cta .btn-outline-cta {
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .25s, color .25s, transform .2s;
+    }
+    .hero-cta .btn-outline-cta:hover {
+      background: #fff;
+      color: #0d6efd;
+      transform: translateY(-2px);
+    }
+
+    /* ── Header logo name ── */
+    .sitename {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    /* ── About: remove hardcoded bg, theme-aware ── */
+    .about.section {
+      background-color: unset !important;
+    }
+
+    /* ── Skill Badges ── */
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13,110,253,.12);
+      color: #0d6efd;
+      border: 1px solid rgba(13,110,253,.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: background .2s, transform .2s;
+    }
+    .skill-badge:hover {
+      background: rgba(13,110,253,.22);
+      transform: translateY(-2px);
+    }
+    .skill-badge i {
+      font-size: 1rem;
+    }
+
+    /* ── Tech Stack: fix image sizing ── */
+    .service-item .icon img {
+      width: 100% !important;
+      height: 120px !important;
+      object-fit: contain !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ── Stats: real numbers ── */
+    .stats-item p {
+      font-size: .95rem;
+      font-weight: 500;
+    }
+
+    /* ── Contact: LinkedIn link ── */
+    .contact .info-item p a {
+      color: inherit;
+      word-break: break-all;
+    }
+    .contact .info-item p a:hover {
+      color: #0d6efd;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 30px 0 20px;
+      text-align: center;
+    }
+    .footer .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .footer .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      font-size: 1.1rem;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .footer .footer-social a:hover {
+      background: #0d6efd;
+      border-color: #0d6efd;
+      transform: translateY(-3px);
+    }
+    .footer .copyright {
+      font-size: .85rem;
+      opacity: .75;
+    }
+
+    /* ── Cert badge chips ── */
+    .cert-verify {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: .78rem;
+      color: #0d6efd;
+      text-decoration: none;
+      border: 1px solid rgba(13,110,253,.4);
+      border-radius: 12px;
+      padding: 2px 10px;
+      transition: background .2s;
+    }
+    .cert-verify:hover {
+      background: rgba(13,110,253,.1);
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: DevFolio
   * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
@@ -42,9 +227,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <!-- <h1 class="sitename">DevFolio</h1> -->
+        <h1 class="sitename">DS</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -82,17 +265,21 @@
   <main class="main">
 
 <section id="hero" class="hero section dark-background">
-  <img src="assets/img/hero.jpg" style="width: 100%; height: auto; object-fit: contain;">
-  
+  <img src="assets/img/hero.jpg" alt="Background">
+
   <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
     <h2>Dhanush Satyavolu</h2>
-    <p><span class="typed" data-typed-items="DevSecOps and Cloud Engineer"></span></p>
+    <p><span class="typed" data-typed-items="DevSecOps Engineer,Cloud Infrastructure Expert,AWS &amp; Azure Certified,Kubernetes Specialist"></span></p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary-cta">View My Work</a>
+      <a href="#contact" class="btn-outline-cta">Get in Touch</a>
+    </div>
   </div>
 </section>
 
 
     <!-- About Section -->
-    <section id="about" class="about section" style="background-color:#8193a5;">
+    <section id="about" class="about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -114,34 +301,22 @@
             <div class="skills-content skills-animation">
 
               <h5>Skills</h5>
-
-              <div class="progress">
-                <span class="skill"><span>CloudFormation</span> <i class="val">100%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"><span>Jenkins CI/CD</span> <i class="val">90%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"><span>Kubernetes - EKS, Minikube and AKS</span> <i class="val">90%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"><span>Docker</span> <i class="val">85%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div><!-- End Skills Item -->
+              <div class="skill-badges">
+                <span class="skill-badge"><i class="bi bi-cloud-fill"></i> AWS</span>
+                <span class="skill-badge"><i class="bi bi-cloud"></i> Azure</span>
+                <span class="skill-badge"><i class="bi bi-diagram-3"></i> Kubernetes / EKS / AKS</span>
+                <span class="skill-badge"><i class="bi bi-box"></i> Docker</span>
+                <span class="skill-badge"><i class="bi bi-layers"></i> CloudFormation / IaC</span>
+                <span class="skill-badge"><i class="bi bi-gear"></i> Terraform</span>
+                <span class="skill-badge"><i class="bi bi-arrow-repeat"></i> Jenkins CI/CD</span>
+                <span class="skill-badge"><i class="bi bi-shield-check"></i> DevSecOps</span>
+                <span class="skill-badge"><i class="bi bi-bar-chart"></i> Prometheus / Grafana</span>
+                <span class="skill-badge"><i class="bi bi-journal-code"></i> Helm</span>
+                <span class="skill-badge"><i class="bi bi-terminal"></i> Bash Scripting</span>
+                <span class="skill-badge"><i class="bi bi-code-slash"></i> Python</span>
+                <span class="skill-badge"><i class="bi bi-search"></i> ELK Stack</span>
+                <span class="skill-badge"><i class="bi bi-bell"></i> Nagios</span>
+              </div>
 
             </div>
           </div>
@@ -296,7 +471,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/kube5.png" alt="Kubernetes Logo" style="width: 300px; height: 1000px;">
+                <img src="assets/img/kube5.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
                 <!-- <h3>Kubernetes</h3> -->
@@ -306,7 +481,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/docker2.png" alt="Kubernetes Logo" style="width: 1000px; height: 1000px;">
+                <img src="assets/img/docker2.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -316,7 +491,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/aws3.png" alt="Kubernetes Logo" style="width: 160px; height: 500px;">
+                <img src="assets/img/aws3.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -326,7 +501,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/cfn2.png" alt="Kubernetes Logo" style="width: 500px; height: 500px;">
+                <img src="assets/img/cfn2.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -337,7 +512,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/jenkins.png" alt="Kubernetes Logo" style="width: 500px; height: 500px;">
+                <img src="assets/img/jenkins.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -348,7 +523,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/python.png" alt="Kubernetes Logo" style="width: 500px; height: 500px;">
+                <img src="assets/img/python.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -359,7 +534,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/bash2.png" alt="Kubernetes Logo" style="width: 750px; height: 750px;">
+                <img src="assets/img/bash2.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -369,7 +544,7 @@
                   <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/helm.png" alt="Kubernetes Logo" style="width: 750px; height: 750px;">
+                <img src="assets/img/helm.png" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -379,7 +554,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <img src="assets/img/linux.jpg" alt="Kubernetes Logo" style="width: 750px; height: 750px;">
+                <img src="assets/img/linux.jpg" alt="Kubernetes Logo" style="width: 100%; height: 120px; object-fit: contain;">
               </div>
               <a href="#" class="stretched-link">
               </a>
@@ -403,29 +578,29 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="0" class="purecounter">232</span>
-              <p>Clients</p>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span><span style="font-size:2rem;font-weight:700;">.5+</span>
+              <p>Years Experience</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="0" class="purecounter">521</span>
-              <p>Projects</p>
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Cloud Certifications</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="2.7" data-purecounter-duration="0" class="purecounter">1453</span>
-              <p>Years Of Support</p>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span><span style="font-size:2rem;font-weight:700;">+</span>
+              <p>Microservices Managed</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="0" class="purecounter">32</span>
-              <p>Awards</p>
+              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Cloud Platforms (AWS &amp; Azure)</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -628,8 +803,7 @@
 
     </section><!-- /Portfolio Section -->
 
-<section id="portfolio" class="portfolio section">
-  </section><section id="certifications" class="certifications section">
+    <section id="certifications" class="certifications section">
   <div class="container section-title" data-aos="fade-up">
     <h2>Certifications and Achievements</h2>
     <p>My professional certs and some cool achievements</p>
@@ -674,7 +848,7 @@
         <div class="resume-item">
           <h4>TS ICET 2023 - State Rank 4</h4>
           <ul>
-            <li>Yes, I stood 4th in the state :) (https://bschool.careers360.com/articles/ts-icet-2024-toppers-list)</li>
+            <li>Secured State Rank 4 in TS ICET 2023 — <a href="https://bschool.careers360.com/articles/ts-icet-2024-toppers-list" target="_blank" rel="noopener">View toppers list</a> 🎉</li>
           </ul>
         </div>
         <div class="resume-item">
@@ -686,7 +860,7 @@
       </div>
     </div>
   </div>
-</section>```
+</section>
 
 
     <!-- Contact Section -->
@@ -717,10 +891,10 @@
 
             <div class="col-lg-4">
               <div class="info-item d-flex align-items-center">
-                <i class="bi bi-telephone flex-shrink-0"></i>
+                <i class="bi bi-linkedin flex-shrink-0"></i>
                 <div>
-                  <h3>Linkedin</h3>
-                  <p>https://www.linkedin.com/in/dhanush-satyavolu-619036237/</p>
+                  <h3>LinkedIn</h3>
+                  <p><a href="https://www.linkedin.com/in/dhanush-satyavolu-619036237/" target="_blank" rel="noopener">linkedin.com/in/dhanush-satyavolu</a></p>
                 </div>
               </div>
             </div><!-- End Info Item -->
@@ -730,7 +904,17 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Email</h3>
-                  <p>satyavoludhanush@gmail.com</p>
+                  <p><a href="mailto:satyavoludhanush@gmail.com">satyavoludhanush@gmail.com</a></p>
+                </div>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="col-lg-4">
+              <div class="info-item d-flex align-items-center">
+                <i class="bi bi-github flex-shrink-0"></i>
+                <div>
+                  <h3>GitHub</h3>
+                  <p><a href="https://github.com/dhanushs11" target="_blank" rel="noopener">github.com/dhanushs11</a></p>
                 </div>
               </div>
             </div><!-- End Info Item -->
@@ -747,9 +931,14 @@
   </main>
 
   <footer id="footer" class="footer accent-background">
-
-
-
+    <div class="container">
+      <div class="footer-social">
+        <a href="https://github.com/dhanushs11" target="_blank" rel="noopener" title="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/dhanush-satyavolu-619036237/" target="_blank" rel="noopener" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:satyavoludhanush@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+      <p class="copyright">© 2026 <strong>Dhanush Satyavolu</strong> · DevSecOps &amp; Cloud Engineer · Hyderabad, India</p>
+    </div>
   </footer>
 
   <!-- Scroll Top -->
