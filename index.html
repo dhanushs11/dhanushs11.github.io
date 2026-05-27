@@ -208,47 +208,65 @@
     }
 
     /* ── Contact info cards: dark pill cards ── */
+    section.contact.section {
+      background-color: #0a0f1a !important;
+    }
+    section.contact.section .section-title h2,
+    section.contact.section .section-title p {
+      color: #e0e8f5 !important;
+    }
+    .contact .info-wrap {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
     .contact .info-item {
-      background: rgba(13,17,30,.65) !important;
+      background: #13192b !important;
       border: 1px solid rgba(255,255,255,.08) !important;
-      border-radius: 12px !important;
-      padding: 20px 22px !important;
+      border-radius: 14px !important;
+      padding: 24px 26px !important;
       transition: box-shadow .25s, transform .2s, border-color .2s !important;
+      height: 100% !important;
     }
     .contact .info-item h3 {
       color: #ffffff !important;
       font-size: 1rem !important;
-      margin-bottom: 4px !important;
+      font-weight: 700 !important;
+      margin-bottom: 5px !important;
     }
     .contact .info-item p,
     .contact .info-item p a {
-      color: #a8b8d0 !important;
+      color: #7a8eb0 !important;
       word-break: break-all;
+      font-size: .9rem !important;
+      text-decoration: none !important;
     }
     .contact .info-item p a:hover {
       color: #6ea8fe !important;
     }
     .contact .info-item:hover {
       border-color: rgba(13,110,253,.4) !important;
-      box-shadow: 0 6px 20px rgba(13,110,253,.12) !important;
-      transform: translateY(-3px) !important;
+      box-shadow: 0 8px 28px rgba(13,110,253,.14) !important;
+      transform: translateY(-4px) !important;
     }
     .contact .info-item i {
-      width: 44px;
-      height: 44px;
-      background: rgba(13,110,253,.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: #0d6efd;
-      flex-shrink: 0;
-      margin-right: 14px;
-      transition: background .2s;
+      width: 48px !important;
+      height: 48px !important;
+      background: rgba(13,110,253,.12) !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.3rem !important;
+      color: #6ea8fe !important;
+      flex-shrink: 0 !important;
+      margin-right: 16px !important;
+      transition: background .2s !important;
     }
     .contact .info-item:hover i {
-      background: rgba(13,110,253,.28);
+      background: rgba(13,110,253,.24) !important;
+      color: #fff !important;
     }
 
     /* ── Stats: real numbers ── */
@@ -360,28 +378,33 @@
     .portfolio-info .details-link {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 5px !important;
-      font-size: .75rem !important;
-      font-weight: 600 !important;
-      color: #6ea8fe !important;
-      background: rgba(13,110,253,.1) !important;
-      border: 1px solid rgba(13,110,253,.25) !important;
-      border-radius: 20px !important;
-      padding: 3px 12px !important;
+      gap: 6px !important;
+      font-size: .82rem !important;
+      font-weight: 700 !important;
+      color: #e0e8f5 !important;
+      background: #21262d !important;
+      border: 1px solid rgba(255,255,255,.18) !important;
+      border-radius: 8px !important;
+      padding: 7px 16px !important;
       text-decoration: none !important;
-      transition: background .2s, color .2s !important;
+      transition: background .2s, border-color .2s, transform .15s !important;
       position: static !important;
+      margin-top: 4px !important;
     }
     .portfolio-info .details-link::before {
-      content: "View on GitHub";
-      font-size: .72rem;
+      font-family: "bootstrap-icons";
+      content: "\F3ED  View on GitHub";
+      font-size: .82rem;
+      letter-spacing: .2px;
     }
     .portfolio-info .details-link i {
       display: none !important;
     }
     .portfolio-info .details-link:hover {
-      background: rgba(13,110,253,.22) !important;
+      background: #30363d !important;
+      border-color: rgba(255,255,255,.3) !important;
       color: #fff !important;
+      transform: translateY(-1px) !important;
     }
 
     /* ── Portfolio category badges ── */
@@ -1235,32 +1258,18 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
+        <!-- Open-to-work banner -->
+        <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="150">
+          <span style="display:inline-block;background:rgba(13,110,253,.12);border:1px solid rgba(13,110,253,.3);color:#6ea8fe;border-radius:50px;padding:9px 26px;font-size:.9rem;font-weight:600;letter-spacing:.4px;">
+            <span style="display:inline-block;width:8px;height:8px;background:#2ea043;border-radius:50%;margin-right:9px;vertical-align:middle;box-shadow:0 0 6px #2ea043;"></span>
+            Open to new opportunities — let's build something great together
+          </span>
+        </div>
+
         <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
-          <div class="row gy-5">
+          <div class="row gy-4 justify-content-center">
 
-
-
-            <div class="col-lg-4">
-              <div class="info-item d-flex align-items-center">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Phone number</h3>
-                  <p>+91-9665664935</p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="col-lg-4">
-              <div class="info-item d-flex align-items-center">
-                <i class="bi bi-linkedin flex-shrink-0"></i>
-                <div>
-                  <h3>LinkedIn</h3>
-                  <p><a href="https://www.linkedin.com/in/dhanush-satyavolu-619036237/" target="_blank" rel="noopener">linkedin.com/in/dhanush-satyavolu</a></p>
-                </div>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="col-lg-4">
+            <div class="col-lg-5 col-md-6">
               <div class="info-item d-flex align-items-center">
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
@@ -1270,12 +1279,32 @@
               </div>
             </div><!-- End Info Item -->
 
-            <div class="col-lg-4">
+            <div class="col-lg-5 col-md-6">
+              <div class="info-item d-flex align-items-center">
+                <i class="bi bi-linkedin flex-shrink-0"></i>
+                <div>
+                  <h3>LinkedIn</h3>
+                  <p><a href="https://www.linkedin.com/in/dhanush-satyavolu-619036237/" target="_blank" rel="noopener">linkedin.com/in/dhanush-satyavolu</a></p>
+                </div>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="col-lg-5 col-md-6">
               <div class="info-item d-flex align-items-center">
                 <i class="bi bi-github flex-shrink-0"></i>
                 <div>
                   <h3>GitHub</h3>
                   <p><a href="https://github.com/dhanushs11" target="_blank" rel="noopener">github.com/dhanushs11</a></p>
+                </div>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="col-lg-5 col-md-6">
+              <div class="info-item d-flex align-items-center">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Phone</h3>
+                  <p>+91-9665664935</p>
                 </div>
               </div>
             </div><!-- End Info Item -->
