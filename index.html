@@ -299,8 +299,144 @@
       opacity: .75;
     }
 
-    /* ── Cert badge chips ── */
-    .cert-verify {
+    /* ── Portfolio cards ── */
+    .portfolio-item {
+      position: relative;
+    }
+    .portfolio-item img {
+      border-radius: 10px 10px 0 0;
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .portfolio-info {
+      border-radius: 0 0 10px 10px !important;
+      background: #151b2e !important;
+      border: 1px solid rgba(255,255,255,.07) !important;
+      border-top: none !important;
+      padding: 14px 16px 14px !important;
+    }
+    .portfolio-info h4 {
+      font-size: .95rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 4px !important;
+      color: #e8edf5 !important;
+    }
+    .portfolio-info p {
+      font-size: .8rem !important;
+      color: #8a9bbf !important;
+      margin-bottom: 6px !important;
+    }
+    .portfolio-category-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+    .badge-cfn  { background: rgba(255,153,0,.15); color: #ff9900; border: 1px solid rgba(255,153,0,.3); }
+    .badge-k8s  { background: rgba(50,108,229,.15); color: #326ce5; border: 1px solid rgba(50,108,229,.3); }
+    .badge-bash { background: rgba(40,167,69,.15);  color: #28a745; border: 1px solid rgba(40,167,69,.3); }
+    .badge-misc { background: rgba(108,117,125,.15); color: #adb5bd; border: 1px solid rgba(108,117,125,.3); }
+
+    /* Filter pills */
+    .portfolio-filters li {
+      border-radius: 20px !important;
+      padding: 6px 18px !important;
+      font-size: .85rem !important;
+      font-weight: 600 !important;
+      border: 1px solid rgba(255,255,255,.12) !important;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s !important;
+    }
+    .portfolio-filters li.filter-active,
+    .portfolio-filters li:hover {
+      background: #0d6efd !important;
+      color: #fff !important;
+      border-color: #0d6efd !important;
+    }
+
+    /* ── Certifications cards ── */
+    .cert-card {
+      background: #13192b;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      margin-bottom: 14px;
+    }
+    .cert-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .cert-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.4rem;
+    }
+    .cert-body h4 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #e0e8f5;
+      margin: 0 0 3px;
+    }
+    .cert-body .cert-issuer {
+      font-size: .78rem;
+      color: #7a8eb0;
+      margin: 0 0 3px;
+    }
+    .cert-body .cert-date {
+      font-size: .75rem;
+      font-weight: 600;
+      color: #556080;
+    }
+    /* Per-issuer colors */
+    .cert-aws   { background: rgba(255,153,0,.15); border-left: 3px solid #ff9900 !important; }
+    .cert-aws .cert-icon { background: rgba(255,153,0,.15); color: #ff9900; }
+    .cert-azure { background: rgba(0,114,204,.12); border-left: 3px solid #0072cc !important; }
+    .cert-azure .cert-icon { background: rgba(0,114,204,.15); color: #0078d4; }
+    .cert-hashi { background: rgba(123,66,188,.12); border-left: 3px solid #7b42bc !important; }
+    .cert-hashi .cert-icon { background: rgba(123,66,188,.15); color: #7b42bc; }
+    .cert-atl   { background: rgba(0,82,204,.1);   border-left: 3px solid #0052cc !important; }
+    .cert-atl .cert-icon { background: rgba(0,82,204,.15); color: #0052cc; }
+    /* Achievement callout */
+    .achievement-card {
+      background: rgba(255,193,7,.07);
+      border: 1px solid rgba(255,193,7,.25);
+      border-left: 4px solid #ffc107 !important;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .achievement-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255,193,7,.1);
+    }
+    .achievement-card h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #ffd454;
+      margin: 0 0 6px;
+    }
+    .achievement-card p {
+      font-size: .82rem;
+      color: #a89060;
+      margin: 0;
+    }
+    .achievement-card a { color: #ffc107; }
+    .achievement-card a:hover { color: #ffd454; }
       display: inline-block;
       margin-top: 4px;
       font-size: .78rem;
@@ -787,7 +923,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/api-gateway.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>API Gateway</h4>
                 <p>CloudFormation template to deploy an API Gateway on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/api-gateway.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -796,7 +932,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/asymmetric-kms.jpg" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Asymmetric KMS</h4>
                 <p>CloudFormation template to deploy an asymmetric kms on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/asymmetric-kms.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -805,7 +941,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/efs.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Elastic File System</h4>
                 <p>CloudFormation template to deploy an elastic file system on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/efs.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -814,7 +950,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/eks.jpg" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Elastic Kubernetes Service and Relational Database Service</h4>
                 <p>CloudFormation template to deploy an EKS and RDS on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/main.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -824,7 +960,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/elb.jpg" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Network Load Balancer</h4>
                 <p>CloudFormation template to deploy a Network Load Balancer AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/nlb-cfn.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -834,7 +970,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/os.jpg" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>OpenSearch</h4>
                 <p>CloudFormation template to deploy an Opensearch cluster on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/opensearch.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -844,7 +980,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/cw.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>EKS autoscaling alarm mechanism template</h4>
                 <p>CloudFormation template to deploy a mechanism to trigger alarms during autoscaling in EKS on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/pod-autoscale-alarms.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -853,7 +989,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/redis.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Redis</h4>
                 <p>CloudFormation template to deploy a Redis cluster on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/redis.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -864,7 +1000,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloudformation">
               <img src="assets/img/portfolio/valkey.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-cfn">☁️ CloudFormation</span>
                 <h4>Valkey</h4>
                 <p>CloudFormation template to deploy a Valkey cluster on AWS</p>
                 <a href="https://github.com/dhanushs11/CloudFormation/blob/main/valkey.yaml" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -873,7 +1009,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-kubernetes">
               <img src="assets/img/portfolio/fargate.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-k8s">⎈ Kubernetes</span>
                 <h4>Fluentbit logging for EKS cluster</h4>
                 <p>Enabling fluentbit logging for EKS cluster on AWS</p>
                 <a href="https://github.com/dhanushs11/Kubernetes/tree/main/Fargate%20logging%20using%20fluentbit" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -881,7 +1017,7 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-kubernetes">
               <img src="assets/img/portfolio/helm.jpg" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-k8s">⎈ Kubernetes</span>
                 <h4>Helm chart sample for EKS cluster</h4>
                 <p>Helm chart for kubernetes</p>
                 <a href="https://github.com/dhanushs11/Kubernetes/tree/main/helm-chart-app" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -889,7 +1025,7 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-kubernetes">
               <img src="assets/img/portfolio/dash.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-k8s">⎈ Kubernetes</span>
                 <h4>Kubernetes Dashboard EKS cluster</h4>
                 <p>Kubernetes Dashboard</p>
                 <a href="https://github.com/dhanushs11/Kubernetes/tree/main/k8s-dash" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -897,7 +1033,7 @@
             </div>
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-kubernetes">
               <img src="assets/img/portfolio/adot.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-k8s">⎈ Kubernetes</span>
                 <h4>Kubernetes Metrics using ADOT for EKS cluster</h4>
                 <p>Kubernetes Metrics</p>
                 <a href="https://github.com/dhanushs11/Kubernetes/tree/main/k8s-metrics" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -907,7 +1043,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bash">
               <img src="assets/img/portfolio/ekskms.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-bash">$ Bash</span>
                 <h4>Encryption of EKS cluster</h4>
                 <p>EKS Encryption script</p>
                 <a href="https://github.com/dhanushs11/BashScripts/blob/main/encrypt-eks.sh" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -916,7 +1052,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bash">
               <img src="assets/img/portfolio/psql.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-bash">$ Bash</span>
                 <h4>Backing up an RDS database</h4>
                 <p>Bash script to back up an RDS database</p>
                 <a href="https://github.com/dhanushs11/BashScripts/blob/main/psql-dump-create.sh" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -924,7 +1060,7 @@
             </div>    
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bash">
               <img src="assets/img/portfolio/sa.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-bash">$ Bash</span>
                 <h4>Kubernetes service account creation</h4>
                 <p>Script to create a service account for Kubernetes</p>
                 <a href="https://github.com/dhanushs11/BashScripts/blob/main/kubernetes-service-account.sh" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -932,7 +1068,7 @@
             </div>           
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bash">
               <img src="assets/img/portfolio/sa.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-bash">$ Bash</span>
                 <h4>Running a command in RDS PSQL using IAM user-token based authentication</h4>
                 <p>Script to run a command inside RDS PSQL cluster using token based authentication</p>
                 <a href="https://github.com/dhanushs11/BashScripts/blob/main/psql-run-command.sh" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -940,7 +1076,7 @@
             </div>     
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-misc">
               <img src="assets/img/portfolio/sa.png" class="img-fluid" alt="S3 Static Website Template Thumbnail">
-              <div class="portfolio-info">
+              <div class="portfolio-info"><span class="portfolio-category-badge badge-misc">📄 Docs & PoCs</span>
                 <h4>Check out some of the documentation and PoCs i have done!</h4>
                 <p>PoC and Documents</p>
                 <a href="https://github.com/dhanushs11/Documents" title="Template Details on GitHub" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
@@ -955,59 +1091,87 @@
 
     <section id="certifications" class="certifications section">
   <div class="container section-title" data-aos="fade-up">
-    <h2>Certifications and Achievements</h2>
-    <p>My professional certs and some cool achievements</p>
-  </div><div class="container" data-aos="fade-up" data-aos-delay="100">
+    <h2>Certifications &amp; Achievements</h2>
+    <p>Professional credentials and standout accomplishments</p>
+  </div>
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="row gy-4">
+
+      <!-- Cloud Certifications -->
       <div class="col-lg-6">
-        <h3 class="resume-title">Cloud Certifications</h3>
-        <div class="resume-item">
-          <h4>Hashicorp Certified Terraform Associate</h4>
-          <h5>Issued: August 2025</h5>
-          <p><em>Hashicorp</em></p>
+        <h3 class="resume-title">Cloud &amp; DevOps Certifications</h3>
+
+        <div class="cert-card cert-hashi">
+          <div class="cert-icon"><i class="bi bi-shield-fill"></i></div>
+          <div class="cert-body">
+            <h4>HashiCorp Certified: Terraform Associate</h4>
+            <p class="cert-issuer">HashiCorp</p>
+            <p class="cert-date">Issued: August 2025</p>
+          </div>
         </div>
-        <div class="resume-item">
-          <h4>AWS Certified Solutions Architect - Associate</h4>
-          <h5>Issued: August 2024</h5>
-          <p><em>Amazon Web Services (AWS)</em></p>
+
+        <div class="cert-card cert-aws">
+          <div class="cert-icon"><i class="bi bi-cloud-fill"></i></div>
+          <div class="cert-body">
+            <h4>AWS Certified Solutions Architect – Associate</h4>
+            <p class="cert-issuer">Amazon Web Services</p>
+            <p class="cert-date">Issued: August 2024</p>
+          </div>
         </div>
-        <div class="resume-item">
-          <h4>Microsoft Certified: Azure Fundamentals</h4>
-          <h5>Issued: January 2023</h5>
-          <p><em>Microsoft Azure</em></p>
+
+        <div class="cert-card cert-aws">
+          <div class="cert-icon"><i class="bi bi-cloud"></i></div>
+          <div class="cert-body">
+            <h4>AWS Certified Cloud Practitioner</h4>
+            <p class="cert-issuer">Amazon Web Services</p>
+            <p class="cert-date">Issued: September 2023</p>
+          </div>
         </div>
-        <div class="resume-item">
-          <h4>AWS Certified Cloud Practitioner</h4>
-          <h5>Issued: September 2023</h5>
-          <p><em>Amazon Web Services (AWS)</em></p>
+
+        <div class="cert-card cert-azure">
+          <div class="cert-icon"><i class="bi bi-microsoft"></i></div>
+          <div class="cert-body">
+            <h4>Microsoft Certified: Azure Fundamentals</h4>
+            <p class="cert-issuer">Microsoft Azure</p>
+            <p class="cert-date">Issued: January 2023</p>
+          </div>
         </div>
-        <div class="resume-item">
-          <h4>Jira Fundamentals</h4>
-          <h5>Issued: May 2023</h5>
-          <p><em>Jira</em></p>
+
+        <div class="cert-card cert-atl">
+          <div class="cert-icon"><i class="bi bi-kanban"></i></div>
+          <div class="cert-body">
+            <h4>Jira Fundamentals</h4>
+            <p class="cert-issuer">Atlassian</p>
+            <p class="cert-date">Issued: May 2023</p>
+          </div>
         </div>
-        <div class="resume-item">
-          <h4>Confluence Fundamentals</h4>
-          <h5>Issued: September 2023</h5>
-          <p><em>Jira</em></p>
+
+        <div class="cert-card cert-atl">
+          <div class="cert-icon"><i class="bi bi-journal-text"></i></div>
+          <div class="cert-body">
+            <h4>Confluence Fundamentals</h4>
+            <p class="cert-issuer">Atlassian</p>
+            <p class="cert-date">Issued: September 2023</p>
+          </div>
         </div>
-      
       </div>
+
+      <!-- Achievements -->
       <div class="col-lg-6">
         <h3 class="resume-title">Achievements</h3>
-        <div class="resume-item">
-          <h4>TS ICET 2023 - State Rank 4</h4>
-          <ul>
-            <li>Secured State Rank 4 in TS ICET 2023 — <a href="https://bschool.careers360.com/articles/ts-icet-2024-toppers-list" target="_blank" rel="noopener">View toppers list</a> 🎉</li>
-          </ul>
+
+        <div class="achievement-card">
+          <h4>🏆 TS ICET 2023 — State Rank 4</h4>
+          <p>Secured <strong>4th rank in the state</strong> out of thousands of candidates in the Telangana State Integrated Common Entrance Test 2023.</p>
+          <p style="margin-top:8px;"><a href="https://bschool.careers360.com/articles/ts-icet-2024-toppers-list" target="_blank" rel="noopener">View toppers list →</a></p>
         </div>
-        <div class="resume-item">
-          <h4>IELTS band 8</h4>
-          <ul>
-            <li>English language</li>
-          </ul>
+
+        <div class="achievement-card">
+          <h4>🌐 IELTS Band 8</h4>
+          <p>Scored <strong>Band 8 out of 9</strong> in the IELTS English language proficiency test — equivalent to a highly proficient user.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
