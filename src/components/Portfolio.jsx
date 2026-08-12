@@ -1,104 +1,145 @@
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import {
-  FiArrowUpRight, FiServer, FiLock, FiFolder, FiBox, FiShare2, FiSearch,
-  FiBell, FiZap, FiDatabase, FiActivity, FiNavigation, FiGrid, FiTrendingUp,
-  FiArchive, FiUser,
-} from 'react-icons/fi'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { FiArrowUpRight, FiGithub } from 'react-icons/fi'
 import { SectionHeader } from './Resume'
 
-const filters = ['All', 'CloudFormation', 'Kubernetes', 'Bash']
-
-const accent = {
-  CloudFormation: '#003d7a',
-  Kubernetes: '#326ce5',
-  Bash: '#2f8f46',
-}
-
-const projects = [
-  { title: 'API Gateway', cat: 'CloudFormation', icon: FiServer, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/api-gateway.yaml', note: 'serverless entry point' },
-  { title: 'Asymmetric KMS', cat: 'CloudFormation', icon: FiLock, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/asymmetric-kms.yaml', note: 'encryption, the smart kind' },
-  { title: 'Elastic File System', cat: 'CloudFormation', icon: FiFolder, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/efs.yaml', note: 'shared storage, zero drama' },
-  { title: 'EKS + RDS', cat: 'CloudFormation', icon: FiBox, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/main.yaml', note: 'k8s meets postgres' },
-  { title: 'Network Load Balancer', cat: 'CloudFormation', icon: FiShare2, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/nlb-cfn.yaml', note: 'traffic, politely routed' },
-  { title: 'OpenSearch', cat: 'CloudFormation', icon: FiSearch, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/opensearch.yaml', note: 'search at scale' },
-  { title: 'EKS Autoscaling Alarms', cat: 'CloudFormation', icon: FiBell, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/pod-autoscale-alarms.yaml', note: 'wake me only when it matters' },
-  { title: 'Redis', cat: 'CloudFormation', icon: FiZap, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/redis.yaml', note: 'in-memory, in production' },
-  { title: 'Valkey', cat: 'CloudFormation', icon: FiDatabase, url: 'https://github.com/dhanushs11/CloudFormation/blob/main/valkey.yaml', note: 'redis&rsquo;s fresh successor' },
-  { title: 'Fluentbit Logging for EKS', cat: 'Kubernetes', icon: FiActivity, url: 'https://github.com/dhanushs11/Kubernetes/tree/main/Fargate%20logging%20using%20fluentbit', note: 'every log accounted for' },
-  { title: 'Helm Chart Sample', cat: 'Kubernetes', icon: FiNavigation, url: 'https://github.com/dhanushs11/Kubernetes/tree/main/helm-chart-app', note: 'packaging for k8s' },
-  { title: 'Kubernetes Dashboard', cat: 'Kubernetes', icon: FiGrid, url: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-dash', note: 'see everything at a glance' },
-  { title: 'K8s Metrics with ADOT', cat: 'Kubernetes', icon: FiTrendingUp, url: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-metrics', note: 'numbers that tell the truth' },
-  { title: 'EKS Encryption', cat: 'Bash', icon: FiLock, url: 'https://github.com/dhanushs11/BashScripts/blob/main/encrypt-eks.sh', note: 'encrypt the whole cluster' },
-  { title: 'RDS Backup', cat: 'Bash', icon: FiArchive, url: 'https://github.com/dhanushs11/BashScripts/blob/main/psql-dump-create.sh', note: 'dumps before disasters' },
-  { title: 'K8s Service Account', cat: 'Bash', icon: FiUser, url: 'https://github.com/dhanushs11/BashScripts/blob/main/kubernetes-service-account.sh', note: 'identities for workloads' },
+const featured = [
+  {
+    title: 'docklean',
+    tag: 'Python · CLI',
+    blurb: 'Docker cleanup, safely.',
+    desc: 'A dry-run-first CLI that reports Docker disk usage and prunes unused containers, images, networks and build cache. Written with only the Python standard library — nothing to pip install.',
+    url: 'https://github.com/dhanushs11/docker-cleanup-tool',
+  },
+  {
+    title: 'BMS Ticket Checker',
+    tag: 'Python · Automation',
+    blurb: 'Your pair of eyes on BookMyShow.',
+    desc: 'Watches BookMyShow for ticket availability on a specific movie, venue and date — then pings you via macOS notifications or email. Ships with Docker and a 24/7 GitHub Actions monitor.',
+    url: 'https://github.com/dhanushs11/bms-ticket-checker',
+  },
+  {
+    title: 'codex-skills',
+    tag: 'Shell · Agent tooling',
+    blurb: 'Skills I teach my copilots.',
+    desc: 'A growing library of reusable DevOps, Linux and AI skills distilled for agent coding tools like Codex — captured from real ops work so I stop re-teaching it every session.',
+    url: 'https://github.com/dhanushs11/codex-skills',
+  },
+  {
+    title: 'This portfolio',
+    tag: 'React · Vite · JS',
+    blurb: 'You are looking at it.',
+    desc: 'Rebuilt from a static template into React + Vite with Framer Motion and this editorial design, auto-deployed to GitHub Pages via a GitHub Actions workflow.',
+    url: 'https://github.com/dhanushs11/dhanushs11.github.io',
+  },
 ]
 
+const libraries = [
+  {
+    name: 'CloudFormation',
+    desc: 'AWS CloudFormation templates — API Gateway, KMS, EFS, EKS + RDS, NLB, OpenSearch, autoscaling alarms, Redis & Valkey',
+    url: 'https://github.com/dhanushs11/CloudFormation',
+  },
+  {
+    name: 'Kubernetes',
+    desc: 'EKS deep-dives — Fluentbit logging on Fargate, Helm charts, dashboards and ADOT metrics',
+    url: 'https://github.com/dhanushs11/Kubernetes',
+  },
+  {
+    name: 'BashScripts',
+    desc: 'Ops automation — EKS encryption, RDS dumps, Kubernetes service accounts',
+    url: 'https://github.com/dhanushs11/BashScripts',
+  },
+]
+
+function FeaturedRow({ project, i, inView }) {
+  return (
+    <motion.a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: i * 0.08 }}
+      className="group grid md:grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 border-t border-black/10 hover:bg-paper-warm transition-colors duration-200 px-3 -mx-3"
+    >
+      <div className="md:col-span-5 flex items-start gap-5">
+        <span className="text-hand text-3xl text-black/25 group-hover:text-accent-warm transition-colors duration-200">
+          {String(i + 1).padStart(2, '0')}
+        </span>
+        <div>
+          <p className="eyebrow text-accent mb-1">{project.tag}</p>
+          <h3 className="font-serif text-3xl md:text-4xl leading-tight text-ink flex items-center gap-3">
+            {project.title}
+            <FiArrowUpRight
+              size={26}
+              className="text-muted group-hover:text-accent transition-all duration-200 group-hover:-translate-y-1 group-hover:translate-x-1"
+            />
+          </h3>
+          <p className="text-hand text-xl text-accent-warm mt-1">{project.blurb}</p>
+        </div>
+      </div>
+      <div className="md:col-span-6 md:col-start-7 flex flex-col justify-between">
+        <p className="text-ink-soft font-light leading-relaxed">{project.desc}</p>
+        <span className="hidden md:inline-flex items-center gap-2 eyebrow text-muted group-hover:text-ink transition-colors duration-200 mt-6">
+          <FiGithub size={14} /> github.com/dhanushs11
+        </span>
+      </div>
+    </motion.a>
+  )
+}
+
 export default function Portfolio() {
-  const [filter, setFilter] = useState('All')
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
-
-  const visible = filter === 'All' ? projects : projects.filter(p => p.cat === filter)
 
   return (
     <section id="portfolio" className="py-28 bg-paper-warm border-y border-black/10">
       <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-10">
-        <SectionHeader index="04" title="Selected work" />
+        <SectionHeader index="04" title="Selected work" note="a few things I actually shipped" />
 
-        <div className="flex flex-wrap gap-2 mb-14">
-          {filters.map(f => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`eyebrow px-5 py-2.5 rounded-full border transition-all duration-200 ${
-                filter === f
-                  ? 'bg-ink text-paper border-ink'
-                  : 'border-ink/20 text-muted hover:border-ink hover:text-ink'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
+        {featured.map((p, i) => (
+          <FeaturedRow key={p.title} project={p} i={i} inView={inView} />
+        ))}
+
+        <div className="mt-20 pt-12 border-t border-black/10">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-hand text-2xl text-muted mb-8"
+          >
+            and the libraries that the day job keeps growing...
+          </motion.p>
+
+          <div className="grid md:grid-cols-3 gap-px bg-black/10 border border-black/10">
+            {libraries.map((lib, i) => (
+              <motion.a
+                key={lib.name}
+                href={lib.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.25 + i * 0.08 }}
+                className="group bg-paper-warm p-7 hover:bg-ink transition-colors duration-300 flex flex-col"
+              >
+                <p className="eyebrow text-muted group-hover:text-paper/50 mb-3">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <h4 className="font-serif text-2xl text-ink group-hover:text-paper leading-tight mb-2">
+                  {lib.name}
+                </h4>
+                <p className="text-sm text-ink-soft font-light leading-relaxed mb-6 group-hover:text-paper/70">
+                  {lib.desc}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 eyebrow text-accent group-hover:text-accent-warm">
+                  Browse the repo <FiArrowUpRight size={15} />
+                </span>
+              </motion.a>
+            ))}
+          </div>
         </div>
-
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {visible.map((p, i) => {
-              const Icon = p.icon
-              return (
-                <motion.a
-                  key={p.title}
-                  layout
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: i * 0.02 }}
-                  className="group block bg-paper border border-black/10 p-7 hover:border-black/30 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div
-                    className="w-14 h-14 rounded-full border flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
-                    style={{ borderColor: `${accent[p.cat]}40`, backgroundColor: `${accent[p.cat]}0d` }}
-                  >
-                    <Icon size={24} style={{ color: accent[p.cat] }} />
-                  </div>
-                  <p className="eyebrow text-accent mb-2" style={{ color: accent[p.cat] }}>{p.cat}</p>
-                  <h3 className="font-serif text-2xl leading-tight text-ink flex items-start gap-3">
-                    {p.title}
-                    <FiArrowUpRight
-                      size={20}
-                      className="text-muted group-hover:text-accent mt-1 shrink-0 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </h3>
-                  <p className="text-hand text-lg text-accent-warm mt-2">{p.note}</p>
-                </motion.a>
-              )
-            })}
-          </AnimatePresence>
-        </motion.div>
       </div>
     </section>
   )
