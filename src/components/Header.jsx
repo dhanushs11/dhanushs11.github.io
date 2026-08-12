@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowRight } from 'react-icons/fi'
+import { scrollToTarget } from '../hooks/useSmoothScroll'
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -29,7 +30,7 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-        <a href="#hero" className="flex items-baseline gap-1">
+        <a href="#hero" onClick={e => { e.preventDefault(); scrollToTarget('#hero') }} className="flex items-baseline gap-1">
           <span className="font-serif text-2xl font-medium tracking-tight text-ink">Dhanush</span>
           <span className="text-hand text-xl text-accent rotate-[-4deg]">Satyavolu</span>
         </a>
@@ -39,6 +40,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={e => { e.preventDefault(); scrollToTarget(link.href) }}
               className="eyebrow text-ink hover:text-accent transition-colors duration-200 relative group"
             >
               {link.name}
@@ -49,6 +51,7 @@ export default function Header() {
 
         <a
           href="#contact"
+          onClick={e => { e.preventDefault(); scrollToTarget('#contact') }}
           className="hidden md:inline-flex items-center gap-2 eyebrow border border-ink/20 hover:border-ink px-5 py-2.5 rounded-full transition-all duration-200 hover:bg-ink hover:text-paper"
         >
           Say hello <FiArrowRight size={14} />
@@ -77,7 +80,7 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={e => { e.preventDefault(); setMobileOpen(false); scrollToTarget(link.href) }}
                   className="py-3 serif text-2xl font-serif text-ink hover:text-accent border-b border-black/5"
                 >
                   {link.name}

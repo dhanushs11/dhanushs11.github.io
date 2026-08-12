@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowDown, FiMail } from 'react-icons/fi'
+import { scrollToTarget } from '../hooks/useSmoothScroll'
 
 const roles = [
   'DevSecOps Engineer',
@@ -82,12 +83,14 @@ export default function Hero() {
         >
           <a
             href="#portfolio"
+            onClick={e => { e.preventDefault(); scrollToTarget('#portfolio') }}
             className="inline-flex items-center gap-3 eyebrow bg-ink text-paper px-8 py-4 rounded-full hover:bg-accent transition-colors duration-200"
           >
             View my work <FiArrowDown size={16} />
           </a>
           <a
             href="#contact"
+            onClick={e => { e.preventDefault(); scrollToTarget('#contact') }}
             className="inline-flex items-center gap-2 eyebrow text-ink border-b border-ink/30 py-2 hover:border-accent hover:text-accent transition-colors duration-200"
           >
             Get in touch <FiMail size={15} />
