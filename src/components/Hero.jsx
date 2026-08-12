@@ -44,7 +44,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="eyebrow text-muted mb-8"
         >
-          Hyderabad · DevSecOps &amp; Cloud Engineer
+          Chennai · DevSecOps &amp; Cloud Engineer
         </motion.p>
 
         <motion.h1

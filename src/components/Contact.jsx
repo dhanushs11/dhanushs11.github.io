@@ -5,9 +5,9 @@ import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiGithub } from 'react-icons/fi'
 const ways = [
   { icon: FiMail, label: 'Email', value: 'satyavoludhanush@gmail.com', href: 'mailto:satyavoludhanush@gmail.com' },
   { icon: FiPhone, label: 'Phone', value: '+91 9665664935', href: 'tel:+919665664935' },
-  { icon: FiMapPin, label: 'Located in', value: 'Hyderabad, India', href: null },
+  { icon: FiMapPin, label: 'Located in', value: 'Chennai, India', href: null },
   { icon: FiGithub, label: 'GitHub', value: '@dhanushs11', href: 'https://github.com/dhanushs11' },
-  { icon: FiLinkedin, label: 'LinkedIn', value: '/in/dhanushs11', href: 'https://linkedin.com/in/dhanushs11' },
+  { icon: FiLinkedin, label: 'LinkedIn', value: '/in/dhanush-satyavolu', href: 'https://www.linkedin.com/in/dhanush-satyavolu-619036237/' },
 ]
 
 export default function Contact() {

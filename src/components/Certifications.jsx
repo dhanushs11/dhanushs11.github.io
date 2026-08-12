@@ -42,14 +42,6 @@ export default function Certifications() {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-14 flex items-start gap-4 border-l-4 border-accent-warm pl-6 max-w-2xl">
-          <span className="text-hand text-xl text-accent-warm mt-1">note:</span>
-          <p className="font-light text-ink-soft leading-relaxed">
-            Scaled microservices from 15 → 20 while cutting deployment time by 40% and raising
-            the security bar across every environment I&rsquo;ve touched.
-          </p>
-        </div>
       </div>
     </section>
   )

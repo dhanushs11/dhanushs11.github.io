@@ -2,7 +2,7 @@ import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 
 const socials = [
   { icon: FiGithub, href: 'https://github.com/dhanushs11', label: 'GitHub' },
-  { icon: FiLinkedin, href: 'https://linkedin.com/in/dhanushs11', label: 'LinkedIn' },
+  { icon: FiLinkedin, href: 'https://www.linkedin.com/in/dhanush-satyavolu-619036237/', label: 'LinkedIn' },
   { icon: FiMail, href: 'mailto:satyavoludhanush@gmail.com', label: 'Email' },
 ]
 

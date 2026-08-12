@@ -5,7 +5,7 @@ import { SectionHeader } from './Resume'
 const tech = [
   { name: 'Kubernetes', img: 'https://cdn.simpleicons.org/kubernetes/326CE5' },
   { name: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  { name: 'AWS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+  { name: 'AWS', img: '/icons/aws.svg' },
   { name: 'Terraform', img: 'https://cdn.simpleicons.org/terraform/7B42BC' },
   { name: 'Jenkins', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
   { name: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },

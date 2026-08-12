@@ -16,7 +16,7 @@ const experience = [
   },
   {
     role: 'Engineer — Technology (DevOps)',
-    org: 'Verticurl',
+    org: 'PennyWise Solutions',
     place: 'Hyderabad',
     period: 'Mar 2025 — Mar 2026',
     points: [
@@ -27,7 +27,7 @@ const experience = [
   },
   {
     role: 'Associate Engineer — DevOps',
-    org: 'PennyWise Solutions (Client: Verticurl)',
+    org: 'PennyWise Solutions',
     place: 'Hyderabad',
     period: 'May 2023 — Mar 2025',
     points: [
@@ -98,7 +98,6 @@ export default function Resume() {
         <SectionHeader
           index="02"
           title="Experience"
-          note="four companies, one habit: fixing things properly"
         />
 
         <ol className="space-y-16">

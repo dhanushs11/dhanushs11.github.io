@@ -48,7 +48,7 @@ export default function About() {
             >
               <p>
                 I&rsquo;m Dhanush Satyavolu, a DevOps Engineer who has spent the last
-                <span className="font-serif italic text-ink"> 3.5+ years </span>
+                <span className="font-serif italic text-ink"> 4 years </span>
                 turning high-scale cloud infrastructure into something dependable.
                 Mostly AWS and Azure — always with security and cost in mind.
               </p>
