@@ -1,114 +1,55 @@
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { FiAward, FiStar } from 'react-icons/fi'
+import { motion, useInView } from 'framer-motion'
+import { SectionHeader } from './Resume'
+import { FiAward } from 'react-icons/fi'
 
-const certifications = [
-  {
-    title: 'AWS Certified Solutions Architect – Associate',
-    issuer: 'Amazon Web Services',
-    date: '2024',
-    icon: 'aws',
-  },
-  {
-    title: 'AWS Certified Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: '2023',
-    icon: 'aws',
-  },
-  {
-    title: 'HashiCorp Certified: Terraform Associate',
-    issuer: 'HashiCorp',
-    date: '2024',
-    icon: 'hashi',
-  },
-  {
-    title: 'Microsoft Certified: Azure Fundamentals',
-    issuer: 'Microsoft',
-    date: '2023',
-    icon: 'azure',
-  },
-  {
-    title: 'Atlassian Certified in Jira Project Administration',
-    issuer: 'Atlassian',
-    date: '2024',
-    icon: 'atl',
-  },
+const certs = [
+  { name: 'AWS Certified Solutions Architect — Associate', org: 'Amazon Web Services', year: '2024' },
+  { name: 'HashiCorp Certified: Terraform Associate', org: 'HashiCorp', year: '2024' },
+  { name: 'AWS Certified Cloud Practitioner', org: 'Amazon Web Services', year: '2023' },
+  { name: 'Microsoft Certified: Azure Fundamentals', org: 'Microsoft', year: '2023' },
+  { name: 'Atlassian Certified in Jira Project Administration', org: 'Atlassian', year: '2024' },
 ]
-
-const theme = {
-  aws: { bg: 'rgba(255,153,0,0.1)', border: '#ff9900', iconBg: 'rgba(255,153,0,0.15)', iconColor: '#ff9900' },
-  azure: { bg: 'rgba(0,114,204,0.1)', border: '#0078d4', iconBg: 'rgba(0,114,204,0.15)', iconColor: '#0078d4' },
-  hashi: { bg: 'rgba(123,66,188,0.1)', border: '#7b42bc', iconBg: 'rgba(123,66,188,0.15)', iconColor: '#a370f7' },
-  atl: { bg: 'rgba(0,82,204,0.08)', border: '#0052cc', iconBg: 'rgba(0,82,204,0.15)', iconColor: '#4c9aff' },
-}
 
 export default function Certifications() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="certifications" className="py-24 px-6 bg-[#0d1117]">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-white mb-4">Achievements</h2>
-          <p className="text-text-muted text-lg font-semibold">Certifications & milestones</p>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mt-4" />
-        </motion.div>
+    <section id="certifications" className="py-28 bg-paper">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-10">
+        <SectionHeader index="05" title="Credentials" note="certified, not just claimed" />
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {certifications.map((cert, i) => {
-            const t = theme[cert.icon]
-            return (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-5 rounded-xl flex items-start gap-4 transition-all duration-200 hover:-translate-y-1"
-                style={{
-                  backgroundColor: t.bg,
-                  borderLeft: `3px solid ${t.border}`,
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: t.iconBg }}
-                >
-                  <FiAward size={22} style={{ color: t.iconColor }} />
-                </div>
+        <div className="border-t border-black/10">
+          {certs.map((c, i) => (
+            <motion.div
+              key={c.name}
+              initial={{ opacity: 0, x: -20 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="group flex items-center justify-between gap-6 py-6 border-b border-black/10 hover:bg-paper-warm transition-colors duration-200 px-4 -mx-4 cursor-default"
+            >
+              <div className="flex items-center gap-5">
+                <span className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent group-hover:text-paper transition-colors duration-200">
+                  <FiAward size={16} />
+                </span>
                 <div>
-                  <h4 className="text-base font-bold text-white mb-1">{cert.title}</h4>
-                  <p className="text-text-muted text-sm">{cert.issuer}</p>
-                  <p className="text-text-muted/60 text-xs font-semibold mt-1">{cert.date}</p>
+                  <h3 className="font-serif text-xl md:text-2xl text-ink leading-tight">{c.name}</h3>
+                  <p className="eyebrow text-muted mt-1">{c.org}</p>
                 </div>
-              </motion.div>
-            )
-          })}
+              </div>
+              <span className="text-hand text-2xl text-muted shrink-0">{c.year}</span>
+            </motion.div>
+          ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.6 }}
-          className="mt-8 p-5 rounded-xl bg-accent-gold/6 border border-accent-gold/20 flex items-start gap-4"
-          style={{ borderLeft: '4px solid #ffc107' }}
-        >
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-accent-gold/15">
-            <FiStar size={22} className="text-accent-gold" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-[#ffd454] mb-1">Achievement</h4>
-            <p className="text-[#9a8050] text-sm">
-              Scaled microservices architecture from 15→20 services, achieving 40% faster deployments
-              and improved modularity across production infrastructure.
-            </p>
-          </div>
-        </motion.div>
+        <div className="mt-14 flex items-start gap-4 border-l-4 border-accent-warm pl-6 max-w-2xl">
+          <span className="text-hand text-xl text-accent-warm mt-1">note:</span>
+          <p className="font-light text-ink-soft leading-relaxed">
+            Scaled microservices from 15 → 20 while cutting deployment time by 40% and raising
+            the security bar across every environment I&rsquo;ve touched.
+          </p>
+        </div>
       </div>
     </section>
   )

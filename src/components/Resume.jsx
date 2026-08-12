@@ -1,181 +1,156 @@
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { FiBriefcase, FiBookOpen, FiMapPin, FiPhone, FiMail } from 'react-icons/fi'
-
-const education = [
-  {
-    title: 'Master of Computer Applications',
-    period: '2023 - Present',
-    place: 'Osmania University, Hyderabad, India',
-    grade: 'Grade: 8.15',
-    details: 'Pursuing part-time. Favorite subjects: Data Structures, Python, Statistics (ML/AI focus).',
-  },
-  {
-    title: 'BE – Electronics & Communication',
-    period: '2018 - 2022',
-    place: 'Chaitanya Bharathi Institute of Technology, Hyderabad, India',
-    grade: 'Grade: 8.6',
-    details: 'Coursework: Computer Architecture, Microprocessors, C Programming, Data Structures.',
-  },
-]
+import { motion, useInView } from 'framer-motion'
 
 const experience = [
   {
-    title: 'DevSecOps Engineer',
-    company: 'HID Global, Chennai',
-    period: 'Mar 2026 - Present',
-    highlights: [
-      'Automated SSL/TLS certificate renewal alerts in Nagios for all production websites',
+    role: 'DevSecOps Engineer',
+    org: 'HID Global',
+    place: 'Chennai',
+    period: 'Mar 2026 — Present',
+    points: [
+      'Automated SSL/TLS certificate renewal alerts in Nagios across all production websites',
       'Added Blackfire profiling across Drupal-based projects',
-      'Integrated SonarQube deployment pipelines for all projects',
-      'Deployed an ELK stack to centralise logging, integrating rsyslog system logs and Drupal application logs',
+      'Integrated SonarQube into deployment pipelines for every project',
+      'Deployed an ELK stack to centralise logging (rsyslog + Drupal app logs)',
     ],
   },
   {
-    title: 'Engineer - Technology (DevOps)',
-    company: 'Verticurl, Hyderabad',
-    period: 'Mar 2025 - Mar 2026',
-    highlights: [
-      'Scaled architecture from 15→20 microservices; better modularity & performance',
-      'Security hardening (Veracode, AWS Security Hub); 40% faster deployments via pipeline optimization',
+    role: 'Engineer — Technology (DevOps)',
+    org: 'Verticurl',
+    place: 'Hyderabad',
+    period: 'Mar 2025 — Mar 2026',
+    points: [
+      'Scaled architecture from 15 → 20 microservices for better modularity & performance',
+      'Security hardening (Veracode, AWS Security Hub); 40% faster deployments',
       'Shifted to Private API Gateways for secure microservice communication',
     ],
   },
   {
-    title: 'Associate Engineer - DevOps',
-    company: 'PennyWise Solutions (Client: Verticurl) | Hyderabad',
-    period: 'May 2023 - Mar 2025',
-    highlights: [
+    role: 'Associate Engineer — DevOps',
+    org: 'PennyWise Solutions (Client: Verticurl)',
+    place: 'Hyderabad',
+    period: 'May 2023 — Mar 2025',
+    points: [
       'Automated backups & SSL/domain checks; 50% faster processes',
       'Deployed microservices on AWS EKS (Fargate), Aurora PostgreSQL, ElastiCache, API Gateways',
-      'Primary infra/CI/CD contact; cut troubleshooting time 40% via RCA tracking',
+      'Primary infra/CI/CD contact — cut troubleshooting time 40% via RCA tracking',
     ],
   },
   {
-    title: 'Consultant - DevOps',
-    company: 'PennyWise Solutions, Hyderabad',
-    period: 'Nov 2022 - May 2023',
-    highlights: [
-      'Strengthened Linux + DevOps foundation; built Jenkins pipelines',
-      'Monitored infra (Nagios, Prometheus, Grafana); proactive patching & security',
-      'POCs on AWS & Azure for incoming client projects',
+    role: 'Consultant — DevOps',
+    org: 'PennyWise Solutions',
+    place: 'Hyderabad',
+    period: 'Nov 2022 — May 2023',
+    points: [
+      'Strengthened the Linux + DevOps foundation; built Jenkins pipelines',
+      'Monitored infra (Nagios, Prometheus, Grafana) with proactive patching',
+      'Ran POCs on AWS & Azure for incoming client projects',
     ],
   },
   {
-    title: 'Intern',
-    company: 'Cognizant',
-    period: 'Jan 2022 - Jun 2022',
-    highlights: [
+    role: 'Intern',
+    org: 'Cognizant',
+    place: '',
+    period: 'Jan 2022 — Jun 2022',
+    points: [
       'Built banking app components (MySQL backend, JS frontend)',
       'Hands-on SQL + ETL (Informatica PowerCenter)',
-      'Converted to full-time offer',
+      'Converted to a full-time offer',
     ],
   },
 ]
 
-function TimelineItem({ item, index, type }) {
+export function SectionHeader({ index, title, note, dotted }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
-
-  const isExp = type === 'experience'
-  const accentColor = isExp ? '#0d6efd' : '#20c997'
-
+  const inView = useInView(ref, { once: true, margin: '-80px' })
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: isExp ? 30 : -30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative pl-8 pb-8 last:pb-0"
-    >
-      <div
-        className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2"
-        style={{ borderColor: accentColor, backgroundColor: isInView ? accentColor : 'transparent' }}
-      />
-      {index < (isExp ? experience.length - 1 : education.length - 1) && (
-        <div className="absolute left-[5px] top-4 w-0.5 h-full bg-white/10" />
-      )}
-
-      <div
-        className="p-5 rounded-xl border transition-all duration-200 hover:-translate-y-1"
-        style={{
-          backgroundColor: `${accentColor}08`,
-          borderColor: `${accentColor}20`,
-          borderLeftWidth: '3px',
-          borderLeftColor: accentColor,
-        }}
+    <div ref={ref} className="mb-16 md:mb-20 max-w-6xl mx-auto px-6 md:px-10">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="flex items-end justify-between gap-6 border-b border-black/15 pb-8"
       >
-        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-        <p className="text-sm font-medium" style={{ color: accentColor }}>{item.period}</p>
-        {item.company && <p className="text-text-muted text-sm mt-1">{item.company}</p>}
-        {item.place && <p className="text-text-muted text-sm mt-1">{item.place}</p>}
-        {item.grade && <p className="text-text-muted text-sm mt-1">{item.grade}</p>}
-        {item.details && <p className="text-text-muted text-sm mt-2">{item.details}</p>}
-        {item.highlights && (
-          <ul className="mt-3 space-y-1.5">
-            {item.highlights.map((h, i) => (
-              <li key={i} className="text-text-muted text-sm flex items-start gap-2">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                {h}
-              </li>
-            ))}
-          </ul>
+        <div>
+          <p className="eyebrow text-muted mb-4">({index})</p>
+          <h2 className="font-serif text-4xl md:text-6xl tracking-tight leading-none text-ink">
+            {title}
+          </h2>
+        </div>
+        {note && (
+          <p className="text-hand text-2xl text-accent-warm rotate-[-3deg] hidden sm:block max-w-[200px] text-right leading-tight">
+            {note}
+          </p>
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+      {dotted && <div className="border-b border-dotted border-black/20" />}
+    </div>
   )
 }
 
 export default function Resume() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="resume" className="py-24 px-6 bg-bg-dark">
+    <section id="resume" className="py-28 px-6 md:px-10 bg-paper-warm border-y border-black/10">
       <div ref={ref} className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-white mb-4">Resume</h2>
-          <p className="text-text-muted text-lg font-medium">A bit about my education and work history :)</p>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mt-4" />
-        </motion.div>
+        <SectionHeader
+          index="02"
+          title="Experience"
+          note="four companies, one habit: fixing things properly"
+        />
 
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <FiBookOpen className="text-primary" size={22} />
-              <h3 className="text-xl font-bold text-white">Summary & Education</h3>
-            </div>
-            <div className="mb-8 p-5 rounded-xl bg-primary/5 border border-primary/20">
-              <h4 className="text-lg font-bold text-white">Dhanush Satyavolu</h4>
-              <p className="text-text-muted text-sm mt-1">
-                DevOps Engineer with 3.5+ years experience building cloud infrastructures that don't just work—they're
-                consistent, secure, and scalable.
-              </p>
-              <div className="mt-3 space-y-1 text-sm text-text-muted">
-                <p className="flex items-center gap-2"><FiMapPin size={14} /> Hyderabad, India</p>
-                <p className="flex items-center gap-2"><FiPhone size={14} /> +91-9665664935</p>
-                <p className="flex items-center gap-2"><FiMail size={14} /> satyavoludhanush@gmail.com</p>
+        <ol className="space-y-16">
+          {experience.map((job, i) => (
+            <motion.li
+              key={job.role}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="grid md:grid-cols-12 gap-4 md:gap-8"
+            >
+              <div className="md:col-span-4 md:text-right">
+                <p className="font-serif text-2xl text-ink md:pr-6 leading-tight">
+                  {job.role}
+                </p>
+                <p className="eyebrow text-accent mt-2">{job.org}{job.place && ` · ${job.place}`}</p>
+                <span className="hidden md:inline-block text-hand text-xl text-muted mt-4">{job.period}</span>
+              </div>
+
+              <div className="hidden md:block md:col-span-1 relative">
+                <span className={`absolute top-2 md:right-0 w-3 h-3 rounded-full border-2 border-accent ${inView ? 'bg-accent' : ''}`} />
+                <span className="absolute top-4 left-1/2 h-[120%] w-px bg-black/15" />
+              </div>
+
+              <div className="md:col-span-7">
+                <p className="text-hand text-xl text-muted md:hidden mb-2">{job.period}</p>
+                <ul className="space-y-3">
+                  {job.points.map((point, pi) => (
+                    <li key={pi} className="flex gap-3 text-ink-soft font-light leading-relaxed">
+                      <span className="text-accent font-medium shrink-0 mt-0.5">—</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.li>
+          ))}
+        </ol>
+
+        <div className="mt-20 grid md:grid-cols-2 gap-8 border-t border-black/15 pt-10">
+          {[
+            { title: 'MCA — Osmania University', sub: '2023 — Present · Grade 8.15 · ML/AI focus' },
+            { title: 'BE Electronics & Communication — CBIT', sub: '2018 — 2022 · Grade 8.6' },
+          ].map(edu => (
+            <div key={edu.title} className="flex items-baseline gap-4">
+              <span className="font-serif text-3xl text-accent/60">“</span>
+              <div>
+                <p className="font-serif text-xl text-ink">{edu.title}</p>
+                <p className="eyebrow text-muted mt-1">{edu.sub}</p>
               </div>
             </div>
-            {education.map((item, i) => (
-              <TimelineItem key={i} item={item} index={i} type="education" />
-            ))}
-          </div>
-
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <FiBriefcase className="text-primary" size={22} />
-              <h3 className="text-xl font-bold text-white">Professional Experience</h3>
-            </div>
-            {experience.map((item, i) => (
-              <TimelineItem key={i} item={item} index={i} type="experience" />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>

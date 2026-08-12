@@ -8,9 +8,18 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-white/5">
-      <div className="max-w-6xl mx-auto text-center">
-        <div className="flex justify-center gap-4 mb-4">
+    <footer className="bg-ink text-paper border-t border-paper/10 py-10 px-6 md:px-10">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-baseline gap-1.5">
+          <span className="font-serif text-xl">Dhanush Satyavolu</span>
+          <span className="text-hand text-lg text-accent-warm">— devsecops</span>
+        </div>
+
+        <p className="eyebrow text-paper/40">
+          &copy; {new Date().getFullYear()} · Built with React, Vite &amp; questionable uptime confidence
+        </p>
+
+        <div className="flex gap-3">
           {socials.map(s => (
             <a
               key={s.label}
@@ -18,15 +27,12 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1 transition-all duration-200"
+              className="w-10 h-10 rounded-full border border-paper/25 flex items-center justify-center text-paper/70 hover:bg-paper hover:text-ink hover:border-paper transition-all duration-200"
             >
-              <s.icon size={18} />
+              <s.icon size={16} />
             </a>
           ))}
         </div>
-        <p className="text-text-muted/60 text-sm">
-          &copy; {new Date().getFullYear()} Dhanush Satyavolu. All rights reserved.
-        </p>
       </div>
     </footer>
   )

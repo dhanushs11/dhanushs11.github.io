@@ -1,217 +1,94 @@
-import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { FiExternalLink, FiGithub } from 'react-icons/fi'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { FiArrowUpRight } from 'react-icons/fi'
+import { SectionHeader } from './Resume'
 
-const categories = ['All', 'Kubernetes', 'CloudFormation', 'Bash', 'Docs & PoCs']
+const filters = ['All', 'CloudFormation', 'Kubernetes', 'Bash']
 
 const projects = [
-  {
-    title: 'API Gateway',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy an API Gateway on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/api-gateway.yaml',
-    img: '/portfolio/api-gateway.png',
-  },
-  {
-    title: 'Asymmetric KMS',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy an asymmetric KMS on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/asymmetric-kms.yaml',
-    img: '/portfolio/asymmetric-kms.jpg',
-  },
-  {
-    title: 'Elastic File System',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy an EFS on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/efs.yaml',
-    img: '/portfolio/efs.png',
-  },
-  {
-    title: 'EKS + RDS',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy an EKS and RDS on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/main.yaml',
-    img: '/portfolio/eks.jpg',
-  },
-  {
-    title: 'Network Load Balancer',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy a Network Load Balancer on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/nlb-cfn.yaml',
-    img: '/portfolio/elb.jpg',
-  },
-  {
-    title: 'OpenSearch',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy an OpenSearch cluster on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/opensearch.yaml',
-    img: '/portfolio/os.jpg',
-  },
-  {
-    title: 'EKS Autoscaling Alarms',
-    category: 'CloudFormation',
-    description: 'CloudFormation template for alarm mechanism during EKS autoscaling',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/pod-autoscale-alarms.yaml',
-    img: '/portfolio/cw.png',
-  },
-  {
-    title: 'Redis',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy a Redis cluster on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/redis.yaml',
-    img: '/portfolio/redis.png',
-  },
-  {
-    title: 'Valkey',
-    category: 'CloudFormation',
-    description: 'CloudFormation template to deploy a Valkey cluster on AWS',
-    link: 'https://github.com/dhanushs11/CloudFormation/blob/main/valkey.yaml',
-    img: '/portfolio/valkey.png',
-  },
-  {
-    title: 'Fluentbit Logging for EKS',
-    category: 'Kubernetes',
-    description: 'Enabling Fluentbit logging for EKS cluster on AWS',
-    link: 'https://github.com/dhanushs11/Kubernetes/tree/main/Fargate%20logging%20using%20fluentbit',
-    img: '/portfolio/fargate.png',
-  },
-  {
-    title: 'Helm Chart Sample',
-    category: 'Kubernetes',
-    description: 'Helm chart for Kubernetes',
-    link: 'https://github.com/dhanushs11/Kubernetes/tree/main/helm-chart-app',
-    img: '/portfolio/helm.jpg',
-  },
-  {
-    title: 'Kubernetes Dashboard',
-    category: 'Kubernetes',
-    description: 'Kubernetes Dashboard for EKS cluster',
-    link: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-dash',
-    img: '/portfolio/dash.png',
-  },
-  {
-    title: 'K8s Metrics with ADOT',
-    category: 'Kubernetes',
-    description: 'Kubernetes Metrics using ADOT for EKS cluster',
-    link: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-metrics',
-    img: '/portfolio/adot.png',
-  },
-  {
-    title: 'EKS Encryption',
-    category: 'Bash',
-    description: 'EKS Encryption script',
-    link: 'https://github.com/dhanushs11/BashScripts/blob/main/encrypt-eks.sh',
-    img: '/portfolio/ekskms.png',
-  },
-  {
-    title: 'RDS Backup',
-    category: 'Bash',
-    description: 'Bash script to back up an RDS database',
-    link: 'https://github.com/dhanushs11/BashScripts/blob/main/psql-dump-create.sh',
-    img: '/portfolio/psql.png',
-  },
-  {
-    title: 'K8s Service Account',
-    category: 'Bash',
-    description: 'Script to create a service account for Kubernetes',
-    link: 'https://github.com/dhanushs11/BashScripts/blob/main/kubernetes-service-account.sh',
-    img: '/portfolio/sa.png',
-  },
+  { title: 'API Gateway', cat: 'CloudFormation', img: '/portfolio/api-gateway.png', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/api-gateway.yaml', note: 'serverless entry point' },
+  { title: 'Asymmetric KMS', cat: 'CloudFormation', img: '/portfolio/asymmetric-kms.jpg', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/asymmetric-kms.yaml', note: 'encryption, the smart kind' },
+  { title: 'Elastic File System', cat: 'CloudFormation', img: '/portfolio/efs.png', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/efs.yaml', note: 'shared storage, zero drama' },
+  { title: 'EKS + RDS', cat: 'CloudFormation', img: '/portfolio/eks.jpg', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/main.yaml', note: 'k8s meets postgres' },
+  { title: 'Network Load Balancer', cat: 'CloudFormation', img: '/portfolio/elb.jpg', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/nlb-cfn.yaml', note: 'traffic, politely routed' },
+  { title: 'OpenSearch', cat: 'CloudFormation', img: '/portfolio/os.jpg', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/opensearch.yaml', note: 'search at scale' },
+  { title: 'EKS Autoscaling Alarms', cat: 'CloudFormation', img: '/portfolio/cw.png', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/pod-autoscale-alarms.yaml', note: 'wake me only when it matters' },
+  { title: 'Redis', cat: 'CloudFormation', img: '/portfolio/redis.png', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/redis.yaml', note: 'in-memory, in production' },
+  { title: 'Valkey', cat: 'CloudFormation', img: '/portfolio/valkey.png', url: 'https://github.com/dhanushs11/CloudFormation/blob/main/valkey.yaml', note: 'redis&rsquo;s fresh successor' },
+  { title: 'Fluentbit Logging for EKS', cat: 'Kubernetes', img: '/portfolio/fargate.png', url: 'https://github.com/dhanushs11/Kubernetes/tree/main/Fargate%20logging%20using%20fluentbit', note: 'every log accounted for' },
+  { title: 'Helm Chart Sample', cat: 'Kubernetes', img: '/portfolio/helm.jpg', url: 'https://github.com/dhanushs11/Kubernetes/tree/main/helm-chart-app', note: 'packaging for k8s' },
+  { title: 'Kubernetes Dashboard', cat: 'Kubernetes', img: '/portfolio/dash.png', url: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-dash', note: 'see everything at a glance' },
+  { title: 'K8s Metrics with ADOT', cat: 'Kubernetes', img: '/portfolio/adot.png', url: 'https://github.com/dhanushs11/Kubernetes/tree/main/k8s-metrics', note: 'numbers that tell the truth' },
+  { title: 'EKS Encryption', cat: 'Bash', img: '/portfolio/ekskms.png', url: 'https://github.com/dhanushs11/BashScripts/blob/main/encrypt-eks.sh', note: 'encrypt the whole cluster' },
+  { title: 'RDS Backup', cat: 'Bash', img: '/portfolio/psql.png', url: 'https://github.com/dhanushs11/BashScripts/blob/main/psql-dump-create.sh', note: 'dumps before disasters' },
+  { title: 'K8s Service Account', cat: 'Bash', img: '/portfolio/sa.png', url: 'https://github.com/dhanushs11/BashScripts/blob/main/kubernetes-service-account.sh', note: 'identities for workloads' },
 ]
 
-const badgeColors = {
-  CloudFormation: { bg: 'rgba(255,153,0,0.12)', text: '#ff9900', border: 'rgba(255,153,0,0.3)' },
-  Kubernetes: { bg: 'rgba(50,108,229,0.12)', text: '#6ea8fe', border: 'rgba(50,108,229,0.3)' },
-  Bash: { bg: 'rgba(40,167,69,0.12)', text: '#56d364', border: 'rgba(40,167,69,0.3)' },
-  'Docs & PoCs': { bg: 'rgba(139,148,158,0.12)', text: '#8b949e', border: 'rgba(139,148,158,0.3)' },
-}
-
 export default function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [filter, setFilter] = useState('All')
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-100px' })
 
-  const filtered = activeFilter === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeFilter)
+  const visible = filter === 'All' ? projects : projects.filter(p => p.cat === filter)
 
   return (
-    <section id="portfolio" className="py-24 px-6">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-white mb-4">Portfolio</h2>
-          <p className="text-text-muted text-lg font-semibold">Some samples of my work. FYI, I have a lot of fun doing it!</p>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mt-4" />
-        </motion.div>
+    <section id="portfolio" className="py-28 bg-paper-warm border-y border-black/10">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-10">
+        <SectionHeader index="04" title="Selected work" note="mostly CloudFormation, some k8s, some bash" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
-        >
-          {categories.map(cat => (
+        <div className="flex flex-wrap gap-2 mb-14">
+          {filters.map(f => (
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                activeFilter === cat
-                  ? 'bg-primary border-primary text-white'
-                  : 'border-white/15 text-text-light hover:bg-white/5 hover:border-white/25'
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`eyebrow px-5 py-2.5 rounded-full border transition-all duration-200 ${
+                filter === f
+                  ? 'bg-ink text-paper border-ink'
+                  : 'border-ink/20 text-muted hover:border-ink hover:text-ink'
               }`}
             >
-              {cat}
+              {f}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, i) => (
-              <motion.div
-                key={project.title}
+            {visible.map((p, i) => (
+              <motion.a
+                key={p.title}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                className="group bg-[#151c2e] border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/30"
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, delay: i * 0.02 }}
+                className="group block break-inside-avoid bg-paper border border-black/10 overflow-hidden hover:border-black/30 transition-colors duration-300"
               >
-                <div className="h-44 overflow-hidden">
+                <div className="overflow-hidden border-b border-black/10">
                   <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    src={p.img}
+                    alt={p.title}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.02] grayscale-0"
+                    loading="lazy"
                   />
                 </div>
-                <div className="p-5">
-                  <span
-                    className="inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-3 border"
-                    style={{
-                      backgroundColor: badgeColors[project.category]?.bg,
-                      color: badgeColors[project.category]?.text,
-                      borderColor: badgeColors[project.category]?.border,
-                    }}
-                  >
-                    {project.category}
-                  </span>
-                  <h4 className="text-base font-bold text-white mb-1">{project.title}</h4>
-                  <p className="text-text-muted text-sm mb-4 leading-relaxed">{project.description}</p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#21262d] hover:bg-[#30363d] border border-white/10 hover:border-white/20 text-text-light hover:text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                  >
-                    <FiGithub size={14} /> View on GitHub <FiExternalLink size={12} />
-                  </a>
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="eyebrow text-accent mb-2">{p.cat}</p>
+                      <h3 className="font-serif text-2xl leading-tight text-ink">{p.title}</h3>
+                    </div>
+                    <FiArrowUpRight
+                      size={22}
+                      className="text-muted group-hover:text-accent transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 shrink-0 mt-1"
+                    />
+                  </div>
+                  <p className="text-hand text-lg text-accent-warm mt-2">{p.note}</p>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </AnimatePresence>
         </motion.div>
