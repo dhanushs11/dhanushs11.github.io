@@ -7,28 +7,24 @@ const featured = [
   {
     title: 'docklean',
     tag: 'Python · CLI',
-    blurb: 'Docker cleanup, safely.',
     desc: 'A dry-run-first CLI that reports Docker disk usage and prunes unused containers, images, networks and build cache. Written with only the Python standard library — nothing to pip install.',
     url: 'https://github.com/dhanushs11/docker-cleanup-tool',
   },
   {
     title: 'BMS Ticket Checker',
     tag: 'Python · Automation',
-    blurb: 'Your pair of eyes on BookMyShow.',
     desc: 'Watches BookMyShow for ticket availability on a specific movie, venue and date — then pings you via macOS notifications or email. Ships with Docker and a 24/7 GitHub Actions monitor.',
     url: 'https://github.com/dhanushs11/bms-ticket-checker',
   },
   {
     title: 'codex-skills',
     tag: 'Shell · Agent tooling',
-    blurb: 'Skills I teach my copilots.',
     desc: 'A growing library of reusable DevOps, Linux and AI skills distilled for agent coding tools like Codex — captured from real ops work so I stop re-teaching it every session.',
     url: 'https://github.com/dhanushs11/codex-skills',
   },
   {
     title: 'This portfolio',
     tag: 'React · Vite · JS',
-    blurb: 'You are looking at it.',
     desc: 'Rebuilt from a static template into React + Vite with Framer Motion and this editorial design, auto-deployed to GitHub Pages via a GitHub Actions workflow.',
     url: 'https://github.com/dhanushs11/dhanushs11.github.io',
   },
@@ -76,7 +72,6 @@ function FeaturedRow({ project, i, inView }) {
               className="text-muted group-hover:text-accent transition-all duration-200 group-hover:-translate-y-1 group-hover:translate-x-1"
             />
           </h3>
-          <p className="text-hand text-xl text-accent-warm mt-1">{project.blurb}</p>
         </div>
       </div>
       <div className="md:col-span-6 md:col-start-7 flex flex-col justify-between">
