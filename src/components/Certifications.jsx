@@ -5,7 +5,7 @@ import { FiAward } from 'react-icons/fi'
 
 const certs = [
   { name: 'AWS Certified Solutions Architect — Associate', org: 'Amazon Web Services', year: '2024' },
-  { name: 'HashiCorp Certified: Terraform Associate', org: 'HashiCorp', year: '2024' },
+  { name: 'HashiCorp Certified: Terraform Associate', org: 'HashiCorp', year: '2025' },
   { name: 'AWS Certified Cloud Practitioner', org: 'Amazon Web Services', year: '2023' },
   { name: 'Microsoft Certified: Azure Fundamentals', org: 'Microsoft', year: '2023' },
   { name: 'Atlassian Certified in Jira Project Administration', org: 'Atlassian', year: '2024' },

@@ -117,9 +117,6 @@ export default function Resume() {
               >
                 <div className="md:col-span-4 md:text-right">
                   <p className="eyebrow text-accent mt-2 md:pr-6">{job.org}{job.place && ` · ${job.place}`}</p>
-                  <p className="font-serif text-xl text-ink md:pr-6 leading-tight mt-2">
-                    {job.roles.length} roles, one ladder
-                  </p>
                   <span className="hidden md:inline-block text-hand text-xl text-muted mt-4">{job.period}</span>
                 </div>
 
