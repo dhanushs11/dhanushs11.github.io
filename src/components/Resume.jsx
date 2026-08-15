@@ -23,7 +23,7 @@ const experience = [
       {
         role: 'Engineer — Technology (DevOps)',
         period: 'Mar 2025 — Mar 2026',
-        promoted: true,
+        promoted: false,
         points: [
           'Scaled architecture from 15 → 20 microservices for better modularity & performance',
           'Security hardening (Veracode, AWS Security Hub); 40% faster deployments',
